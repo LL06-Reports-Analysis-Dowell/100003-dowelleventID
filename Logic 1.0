@@ -1,0 +1,88 @@
+1	Define the event				
+1.1		Dowelleventcreation( Platform(code)  City(code)   Day(code) Database(code)   Process(code)          Object/form/flow(code)        Instance ID        context (array)  Document ID                                                                                           )			
+1.1.1			Platform		
+				Input variable	
+1.1.2			City		
+				Input variable	
+1.1.3			Day		
+				Input variable	
+1.1.4			Database 		
+				Input variable	
+1.1.5			IP Address		
+				Call track my IP	
+1.1.6			Login ID		
+				Call Login function	
+1.1.7			Session ID		
+				Call Login function	
+1.1.8			Process 		
+				Input Variable	
+1.1.9			Regional time		
+				Call Dowell Clock function	
+1.1.10			Dowell time		
+				Call Dowell Clock function	
+1.1.11			Location(GPS)		
+				Call track my IP	
+1.1.12			Object/form/flow		
+				Input variable	
+1.1.13			Instance ID		
+				Input variable	
+1.1.14			Context		
+				Input array	
+1.1.15			Document ID		
+				Input variable	
+2.1	Take the platform				
+2.1.1		Code platforms as ' 01'			
+2.1.2		connect to platform master and take platform ID against the platform code			
+2.1.2.1			match the code with ID		
+2.1.2.1.1				if matching,then continue	
+2.1.2.1.2				if not matching prompt -platform code is not matching	
+2.2	Select city 				
+2.2.1		City code as '101'			
+2.2.2		connect to City master and take City ID against the City code			
+2.2.2.1			match the code with ID		
+2.2.2.1.1				if matching,then continue	
+2.2.2.1.2				if not matching prompt -City code is not matching	
+2.3	Input day 				
+2.3.1		Code for days as '0001'			
+2.3.2		connect to Day master and take Day ID against the Day code			
+2.3.2.1			match the code with ID		
+2.3.2.1.1				if matching,then continue	
+2.3.2.1.2				if not matching prompt -Day code is not matching	
+2.4	Database				
+2.4.1		Database code as '01'			
+2.4.2		connect to Database master and take Database ID against the Database code			
+2.4.2.1			match the code with ID		
+2.4.2.1.1				if matching,then continue	
+2.4.2.1.2				if not matching prompt -Database code is not matching	
+					
+2.5	Process				
+2.5.1		Process code as '000001'			
+2.5.2		connect to Process master and take Process ID against the Process code			
+2.5.2.1			match the code with ID		
+2.5.2.1.1				if matching,then continue	
+2.5.2.1.2				if not matching prompt -Process code is not matching	
+					
+2.6	Object/form/flow				
+2.6.1		connect to Object master and take Object ID against the Object code			
+2.6.2			match the code with ID		
+2.6.2.1				if matching,then continue	
+2.6.2.1.1				if not matching prompt -Object code is not matching	
+					
+3.1		if Document ID =24 digits,then continue			
+3.2		if Document ID <24 digits,then make it = 24 digits by adding required number of '0' in prefix.			
+3.3		if Document ID> 24 digits,then reject.			
+					
+4	Creation of an event ID				
+4.1		Take platform,city,day as 01.001.0001			
+4.2		Take document ID -24 digits			
+4.3		Join the ID of platform,city,day an Document ID to give event ID			
+					
+5		If event ID=33 digits,then continue			
+		If event ID not equal to 33 digits,then reject			
+			Prompt " Error in event ID creation"		
+6		Connect to event creation Database			
+6.1			Insert all the 10 values( Event ID        Database ID        Document ID of event        IP        Login details        Session details        Process        Regional time        Dowell time        Location (GPS)        Object/form/flow        Instance ID        context (array)    )   in the database		
+					
+7		Result()			
+					
+		End			
