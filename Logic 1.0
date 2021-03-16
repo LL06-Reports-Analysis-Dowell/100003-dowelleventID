@@ -1,100 +1,103 @@
-1	Define the event					
-1.1		Dowelleventcreation( Platform(code)  City(code)   Day(code) Database(code)   Process(code)          Object/form/flow(code)        Instance ID        context (array)  Document ID                                                                                           )				
-1.1.1			Platform			
-				Input variable from master database in mysql		
-1.1.2			City			
-				Input variable from master database in mysql		
-1.1.3			Day			
-				Input variable from master database in mysql		
-1.1.4			Database 			
-				Input variable from master database in mysql		
-1.1.5			IP Address			
-				Call dowell track my IP function		
-1.1.6			Login ID			
-				Call DowellLogin function		
-1.1.7			Session ID			
-				Call DowellLogin function		
-1.1.8			Process 			
-				Input variable from master database in mysql		
-1.1.9			Regional time			
-				Call Dowell Clock function		
-1.1.10			Dowell time			
-				Call Dowell Clock function		
-1.1.11			Location(GPS)			
-				Call Dowell track my IP function		
-1.1.12			Object/form/flow			
-				Input variable from master database in mysql		
-1.1.13			Instance ID			
-				Input variable from the function 		
-1.1.14			Context			
-				Input array from the function 		
-1.1.15			Document ID			
-				Input variable from the function		
-2.1	Define platform as variable 					
-2.1.1		Code platforms as ' 01'				
-2.1.2		connect to platform master in mysql(details will be provided) and take platform ID against the platform code				
-2.1.2.1			match the code with ID			
-2.1.2.1.1				if matching,then continue		
-2.1.2.1.2				if not matching prompt -platform code is not matching		
-2.2	Define city as variable					
-2.2.1		City code as '101'				
-2.2.2		connect to City master in mysql(details will be provided) and take City ID against the City code				
-2.2.2.1			match the code with ID			
-2.2.2.1.1				if matching,then continue		
-2.2.2.1.2				if not matching prompt -City code is not matching		
-2.3	Define day as variable					
-2.3.1		Code for days as '0001'				
-2.3.2		connect to Day master in mysql(details will be provided) and take Day ID against the Day code				
-2.3.2.1			match the code with ID			
-2.3.2.1.1				if matching,then continue		
-2.3.2.1.2				if not matching prompt -Day code is not matching		
-2.4	Define Database as variable					
-2.4.1		Database code as '01'				
-2.4.2		connect to Database master in mysql(details will be provided) and take Database ID against the Database code				
-2.4.2.1			match the code with ID			
-2.4.2.1.1				if matching,then continue		
-2.4.2.1.2				if not matching prompt -Database code is not matching		
-						
-2.5	Define Process as variable					
-2.5.1		Process code as '000001'				
-2.5.2		connect to Process master in mysql(details will be provided)  and take Process ID against the Process code				
-2.5.2.1			match the code with ID			
-2.5.2.1.1				if matching,then continue		
-2.5.2.1.2				if not matching prompt -Process code is not matching		
-						
-2.6	Define Object/form/flow as variable					
-2.6.1		connect to Object master and take Object ID against the Object code				
-2.6.2			match the code with ID			
-2.6.2.1				if matching,then continue		
-2.6.2.2				if not matching, prompt -Object code is not matching		
-						
-2.7	Define Instance ID as variable					
-2.7.1		Instance code as '10001'				
-2.7.2		if it is blank,prompt - null ,go to 6				
-						
-						
-2.8	Define Context as array					
-2.8.1		if it is blank,prompt - null				
-2.8.1.1		if non blank,then continue				
-						
-2.9	Define Document ID as variable					
-2.9.1		if Document ID =24 digits,then continue				
-2.9.2		if Document ID <24 digits,then make it = 24 digits by adding required number of '0' in prefix.				
-2.9.3		if Document ID> 24 digits,then prompt and  reject.				
-2.9.4			Assign value to Document ID			
-						
-3	Define Event ID as variable					
-3.1		Take platform,city,day,Document ID				
-3.2		Join the ID of platform,city,day and Document ID to variable event ID				
-						
-4		If event ID=33 digits,then continue				
-		If event ID not equal to 33 digits,then reject				
-			Prompt " Error in event ID creation"			
-				Call errorfunction()		
-5		Connect to event creation Database(sample database )				
-5.1			Insert all the 12 variables corresponding  to each city(table/collection) in event database (will be provided later)			
-5.2			Insert ( Event ID        Database ID      IP        Login details        Session details        Process        Regional time        Dowell time        Location (GPS)        Object/form/flow        Instance ID        context (array)    )   in the database			
-5.3			Assign ID of the inserted record/document to a variable			
-6		Function output(    ID of inserted record/document(24 digits) ,  Event ID(33 digits)   )                                                                                                                                                                                                                        				
-						
-		End				
+1	Define the event			
+1.1		Dowelleventcreation( Platform(code)  City(code)   Day(code) Database(code)   Process(code)          Object/form/flow(code)        Instance ID        context (array)  Document ID                                                                                           )		
+1.1.1			Platform	
+				Input variable from master database in mysql
+1.1.2			City	
+				Input variable from master database in mysql
+1.1.3			Day	
+				Input variable from master database in mysql
+1.1.4			Database 	
+				Input variable from master database in mysql
+1.1.5			IP Address	
+				Call dowell track my IP function
+1.1.6			Login ID	
+				Call DowellLogin function
+1.1.7			Session ID	
+				Call DowellLogin function
+1.1.8			Process 	
+				Input variable from master database in mysql
+1.1.9			Regional time	
+				Call Dowell Clock function
+1.1.10			Dowell time	
+				Call Dowell Clock function
+1.1.11			Location(GPS)	
+				Call Dowell track my IP function
+1.1.12			Object/form/flow	
+				Input variable from master database in mysql
+1.1.13			Instance ID	
+				Input variable from the function 
+1.1.14			Context	
+				Input array from the function 
+1.1.15			Document ID	
+				Input variable from the function
+2.1	Define platform as variable 			
+2.1.1		Code platforms as ' 01'		
+2.1.2		connect to platform master in mysql(details will be provided) and take platform ID against the platform code		
+2.1.2.1			match the code with ID	
+2.1.2.1.1				if matching,then continue
+2.1.2.1.2				if not matching prompt -platform code is not matching
+2.2	Define city as variable			
+2.2.1		City code as '101'		
+2.2.2		connect to City master in mysql(details will be provided) and take City ID against the City code		
+2.2.2.1			match the code with ID	
+2.2.2.1.1				if matching,then continue
+2.2.2.1.2				if not matching prompt -City code is not matching
+2.3	Define day as variable			
+2.3.1		Code for days as '0001'		
+2.3.2		connect to Day master in mysql(details will be provided) and take Day ID against the Day code		
+2.3.2.1			match the code with ID	
+2.3.2.1.1				if matching,then continue
+2.3.2.1.2				if not matching prompt -Day code is not matching
+2.4	Define Database as variable			
+2.4.1		Database code as '01'		
+2.4.2		connect to Database master in mysql(details will be provided) and take Database ID against the Database code		
+2.4.2.1			match the code with ID	
+2.4.2.1.1				if matching,then continue
+2.4.2.1.2				if not matching prompt -Database code is not matching
+				
+2.5	Define Process as variable			
+2.5.1		Process code as '000001'		
+2.5.2		connect to Process master in mysql(details will be provided)  and take Process ID against the Process code		
+2.5.2.1			match the code with ID	
+2.5.2.1.1				if matching,then continue
+2.5.2.1.2				if not matching prompt -Process code is not matching
+				
+2.6	Define Object/form/flow as variable			
+2.6.1		connect to Object master and take Object ID against the Object code		
+2.6.2			match the code with ID	
+2.6.2.1				if matching,then continue
+2.6.2.2				if not matching, prompt -Object code is not matching
+				
+2.7	Define Instance ID as variable			
+2.7.1		Instance code as '10001'		
+2.7.2		if it is blank,prompt - null ,go to 6		
+				
+				
+2.8	Define Context as array			
+2.8.1		if it is blank,prompt - null		
+2.8.1.1		if non blank,then continue		
+				
+2.9	Define Document ID as variable			
+2.9.1		if Document ID =24 digits,then continue		
+2.9.2		if Document ID <24 digits,then make it = 24 digits by adding required number of '0' in prefix.		
+2.9.3		if Document ID> 24 digits,then prompt and  reject.		
+2.9.4			Assign value to Document ID	
+				
+3	Define Event ID as variable			
+3.1		Take platform,city,day,Document ID		
+3.2		Join the ID of platform,city,day and Document ID to variable event ID		
+				
+4		If event ID=33 digits,then continue		
+4.1		If event ID not equal to 33 digits,then reject		
+4.1.1			Prompt " Error in event ID creation"	
+4.1.1.1				Call errorfunction()
+5		Connect to event creation Database(sample database )		
+5.1			Insert all the 12 variables corresponding  to each city(table/collection) in event database (will be provided later)	
+5.2			Insert ( Event ID        Database ID      IP        Login details        Session details        Process        Regional time        Dowell time        Location (GPS)        Object/form/flow        Instance ID        context (array)    )   in the database	
+5.3			Assign ID of the inserted record/document to a variable	
+5.3.1			If the insert command gives error	
+5.3.1.1				assign error number and descripion to variables
+5.3.2			if no error,set error number =0 ,error description = 0	
+6		Function output(    ID of inserted record/document(24 digits) ,  Event ID(33 digits) , error status(number ,description)  )                                                                                                                                                                                                                        		
+				
+		End		
