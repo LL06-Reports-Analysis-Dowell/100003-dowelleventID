@@ -1,26 +1,31 @@
 import MySQLdb
 
+#To get sql connection
 db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="user",         # your username
                      passwd="pwd",  # your password
                      db="db")        # name of the data base
 
-
+#cursor that points to the db instance
 cursor = db.cursor()
 
+#fucntion to check whether the given variable is blank or null
 def is_not_blank(s):
     return bool(s and not s.isspace())
 
+#Method to close the db connection
 def close_connection():
     cursor.close()
     connection.close()
-
+    
+#Method to get correspondind id for the given table and code
 def get_id(table, code):
     query = "SELECT id FROM" + table + "WHERE code='" + code + "';"
     cursor.execute(query)
     results = cursor.fetchall()
     return results[0][0]
 
+#Method to create event
 def create_event(platform,city,day,database,process,object_id,instance_id,context,document_id):
     ip_address = track_ip()
     login_id=login()
@@ -45,7 +50,7 @@ def create_event(platform,city,day,database,process,object_id,instance_id,contex
     if isinstance(context, list) and not context:
         return 'context is empty'
     if len(document_id)<24:
-        document_id=document_id.zfill(24-len(document_id))
+        document_id=document_id.zfill(24-len(document_id)) # To fill prefix with zero to make length to 24
     if len(document_id)>24:
         return 'Invalid document id'
     event_id=platform+city+day+document_id
