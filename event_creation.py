@@ -1,6 +1,6 @@
 import MySQLdb
 class EventCreation:
-    flatform_id=""
+    platform_id=""
     city_id=""
     day_id=""
     database_id=""
