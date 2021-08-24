@@ -2,7 +2,7 @@ from flask import Flask,request,session
 from flask import render_template
 from flask import url_for
 from werkzeug.utils import redirect
-from insert import dowellconnection
+from dowell import dowellconnection
 from datetime import datetime
 dd=datetime.now()
 time=dd.strftime("%d:%m:%Y,%H:%M:%S")
