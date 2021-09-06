@@ -99,6 +99,10 @@ def api_data():
             NewObjectID=dowellconnection("FB","bangalore","mongodb","events","events","87654321","ABCDE","insert",field,"nil")
             return f"NewObjectID : {NewObjectID} \n event_id :{event_id}"
     return "its work"
+def timefun():
+    dd=datetime.now()
+    time=dd.strftime("%d:%m:%Y,%H:%M:%S")
+    return time
 @app.route('/timefun',methods =["GET", "POST"])
 def timefunc():
     if (request.method=="POST"):
