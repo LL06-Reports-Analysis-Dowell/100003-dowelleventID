@@ -98,5 +98,22 @@ def api_data():
             "object":object_id,"instane_id":instance_id,"context": context_is}
             NewObjectID=dowellconnection("FB","bangalore","mongodb","events","events","87654321","ABCDE","insert",field,"nil")
             return f"NewObjectID : {NewObjectID} \n event_id :{event_id}"
+    return "its work"
+@app.route('/timefun',methods =["GET", "POST"])
+def timefunc():
+    if (request.method=="POST"):
+        request_data=request.get_json()
+        value = request_data['value']
+        objects = request_data['object']
+        rule = request_data['rules']
+        login = request_data['login']
+        if value and objects and rule and login:
+            timer=timefun()
+            field = {"somevalue":value,"modified date":timer,"objects":objects,"rule":rule,"login":login}
+            #create=dowellconnection("FB","bangalore","mongodb","events","events","87654321","ABCDE","insert",field,"nil")
+            return "data successfully sent"
+        else:
+            return "could not insert data into the database"
+    return "it works"
 if __name__=='__main__':
     lav.run(debug=True)
