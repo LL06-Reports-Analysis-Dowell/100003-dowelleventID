@@ -1,6 +1,6 @@
 import MySQLdb
 
-#To get sql connection
+#To get sql database connection
 db = MySQLdb.connect(host="localhost",    # your host, usually localhost
                      user="user",         # your username
                      passwd="pwd",  # your password
