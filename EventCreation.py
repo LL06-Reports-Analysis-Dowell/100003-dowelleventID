@@ -24,7 +24,7 @@ def api_data():
         #platformcode define
         pfm_code = request_data['platformcode']
         pfm={"platformcode":pfm_code}
-        pfm_response=dowellconnection("mstr","bangalore","mysql","platform_master","pfm_master","97654321","ABCDE","fetch",pfm,"nil")
+        pfm_response=dowellconnection("mstr","bangalore","pfm","platform_master","pfm_master","97654321","ABCDE","fetch",pfm,"nil")
         if not pfm_code in pfm_response or pfm_response=="false":
             return "Platform code not matching"
         else:
@@ -32,35 +32,35 @@ def api_data():
             pfm_id=pfm_code
         city_code = request_data['citycode']
         city={"citycode":city_code}
-        city_response=dowellconnection("mstr","bangalore","mysql","city_master","city_master","67654321","ABCDE","fetch",city,"nil")
+        city_response=dowellconnection("mstr","bangalore","pfm","city_master","city_master","67654321","ABCDE","fetch",city,"nil")
         if not city_code in city_response or city_response=="false":
             return "City code not matching"
         else:
             city_id=city_code
         day_code = request_data['daycode']
         day={"daycode":day_code}
-        day_response=dowellconnection("mstr","bangalore","mysql","day_master","day_master","77654321","ABCDE","fetch",day,"nil")
+        day_response=dowellconnection("mstr","bangalore","pfm","day_master","day_master","77654321","ABCDE","fetch",day,"nil")
         if not day_code in day_response or day_response=="false":
             return "day code not matching"
         else:
             day_id=day_code
         # db_code = request_data['dbcode']
         # db={"dbcode":db_code}
-        # db_response=dowellconnection("mstr","bangalore","mysql","db_master","db_master","37654321","ABCDE","fetch",db,"nil")
+        # db_response=dowellconnection("mstr","bangalore","pfm","db_master","db_master","37654321","ABCDE","fetch",db,"nil")
         # if not db_code in db_response or db_response=="false":
         #    return "database code not matching"
         # else:
         #     db_id=db_code
         process_code = request_data['processcode']
         process={"processcode":process_code}
-        process_response=dowellconnection("mstr","bangalore","mysql","process_master","process_master","57654321","ABCDE","fetch",process,"nil")
+        process_response=dowellconnection("mstr","bangalore","pfm","process_master","process_master","57654321","ABCDE","fetch",process,"nil")
         if not process_code in process_response or process_response=="false":
             return "process code not matching"
         else:
             process_id=process_code
         object_code = request_data['objectcode']
         object={"objectcode":object_code}
-        object_response=dowellconnection("mstr","bangalore","mysql","object_master","object_master","47654321","ABCDE","fetch",object,"nil")
+        object_response=dowellconnection("mstr","bangalore","pfm","object_master","object_master","47654321","ABCDE","fetch",object,"nil")
         if not object_code in object_response or object_response=="false":
             return "object code not matching"
         else:
@@ -96,7 +96,7 @@ def api_data():
             "process":process_id,"regional_time":request_data["regional_time"],
             "dowell_time":request_data["dowell_time"],"location":request_data["location"],
             "object":object_id,"instane_id":instance_id,"context": context_is}
-            NewObjectID=dowellconnection("FB","bangalore","mongodb","events","events","87654321","ABCDE","insert",field,"nil")
+            NewObjectID=dowellconnection("FB","bangalore","blr","events","events","87654321","ABCDE","insert",field,"nil")
             return f"NewObjectID : {NewObjectID} \n event_id :{event_id}"
     return "its work"
 def timefun():
