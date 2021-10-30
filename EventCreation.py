@@ -114,7 +114,7 @@ def timefunc():
         if value and objects and rule and login:
             timer=timefun()
             field = {"somevalue":value,"modified date":timer,"objects":objects,"rule":rule,"login":login}
-            #create=dowellconnection("FB","bangalore","mongodb","events","events","87654321","ABCDE","insert",field,"nil")
+            #create=dowellconnection("FB","bangalore","blr","events","events","87654321","ABCDE","insert",field,"nil")
             return "data successfully sent"
         else:
             return "could not insert data into the database"
