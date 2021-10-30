@@ -7,6 +7,7 @@ def senddata(url,data):
 def sendapi():
     from datetime import datetime
     dd=datetime.now()
+    #new
     time=dd.strftime("%d:%m:%Y,%H:%M:%S")
     url1="https://100003.pythonanywhere.com/eventcreation"
     data={"platformcode":"FB" ,"citycode":"101","daycode":"0",
