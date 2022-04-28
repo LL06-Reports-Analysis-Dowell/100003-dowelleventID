@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lav</title>
+        <style>
+        .content{
+            margin:10px auto;
+            width:400px;
+            height:400px;
+        }
+            input{
+                margin-top: 20px;
+                height: 25px;
+                width: 200px;
+            }
+            input[type=submit] {
+            background:green;
+            width: 200px;
+            height:40px;
+            color:#fff;
+            font-size: 18px;
+            border:1pxsolid#eee;
+            border-radius:20px;
+            box-shadow:5px5px5px#eee;
+            text-shadow:none;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+        <table>
+        <form action="" method="POST">
+            <tr>
+            <div>
+                <td><label style="font-size:26px;" for="Event">Somevalue :</label></td>
+                <td><input type="text" name="value" id="Event"></td></tr>
+                <tr>
+                        <div>
+                <td><label style="font-size:26px;" for="object">Object ID :</label></td>
+                <td><input type="text" name="object" id="object"></td></tr>
+            </div>
+            </tr>
+                            <tr>
+                        <div>
+                <td><label style="font-size:26px;" for="rules">Rules :</label></td>
+                <td><input type="text" name="rules" id="rules"></td></tr>
+            </div>
+            </tr>
+                            <tr>
+                        <div>
+                <td><label style="font-size:26px;" for="login">Login Details :</label></td>
+                <td><input type="text" name="login" id="login"></td></tr>
+                <tr>
+                    <td colspan="2"><span style="color:red;font-weight:bold">{{context.err}}</span>
+
+                    </td></tr>
+            </div>
+            </tr>
+            <tr>
+                    <td colspan="2" align="center">
+            <input type="submit" value="submit">
+            </td>
+            </tr>
+        </form>
+        <h1><center>Create with along with time</center></h1>
+        </table>
+        <table border="1" width="100%" style="font-size:18px;">
+            <tr>
+                <th>Field</th><th>Modified Time</th><th>Object</th><th>Rules</th><th>Login</th>
+            </tr>
+            <tr>
+                <td>{{context.value}}</td>
+                <td>{{context.time}}</td>
+                <td>{{context.object}}</td>
+                <td>{{context.rule}}</td>
+                <td>{{context.login}}</td>
+            </tr>
+        </table>
+        </div>
+    </body>
+</html>

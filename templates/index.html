@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lav</title>
+        <style>
+            input{
+                margin-top: 20px;
+                height: 25px;
+                width: 200px;
+            }
+            input[type=submit] {
+            background:#ce0808;
+            width: 200px;
+            height:40px;
+            color:#fff;
+            font-size: 18px;
+            border:1pxsolid#eee;
+            border-radius:20px;
+            box-shadow:5px5px5px#eee;
+            text-shadow:none;
+        }
+        </style>
+    </head>
+    <body>
+        <div style="width:800px; margin: 10px auto; font-size: 18px; font-weight: bold;">
+        <form action="" method="POST">
+            <table width="70%">
+                <tr>
+            <div>
+               <td> <label for="pfm">Platform Code</label></td>
+                <td><input type="text" name="pfm_code" id="pfm" required>
+                    <span style="color:red;font-weight:bold">{{context.pfm_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+                <td><label for="city">City Code</label></td>
+                <td><input type="text" name="city_code" id="city" required>
+                    <span style="color:red;font-weight:bold">{{context.city_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+                <td>
+                <label for="day">Day Code</label></td>
+                <td><input type="text" name="day_code" id="day" required>
+                    <span style="color:red;font-weight:bold">{{context.day_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+                <td><label for="database">Database Code</label></td>
+                <td><input type="text" name="database_code" id="database" required>
+                    <span style="color:red;font-weight:bold">{{context.database_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+                <td><label for="IP">IP Address</label></td>
+                <td><input type="text" name="IP_Address" id="IP", value="{{context.IP}}" required>
+                    <span style="color:red;font-weight:bold">{{context.IP_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+               <td> <label for="Login">Login</label></td>
+                <td><input type="text" name="login" id="Login" required>
+                <span style="color:red;font-weight:bold">{{context.login_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+                <td><label for="session">Session</label></td>
+                <td><input type="text" name="session" id="session" value="{{context.session}}" required>
+                    <span style="color:red;font-weight:bold">{{context.session_error}}</span>
+                </td>
+
+            </div></tr>
+            <div><tr>
+                <td><label for="process">Process Code</label></td>
+                <td><input type="text" name="process_code" id="process" required>
+                    <span style="color:red;font-weight:bold">{{context.process_error}}</span>
+                </td>
+
+
+            </tr>
+            </div></tr>
+            <div><tr>
+                <td><label for="regional">Regional Time</label></td>
+                <td><input type="text" name="regional_time" id="regional" value="{{context.time}}" required>
+                    <span style="color:red;font-weight:bold">{{context.regional_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+              <div>
+                <td><label for="dowell">Dowell Time</label></td>
+               <td><input type="text" name="dowell_time" id="dowell" value="{{context.time}}" required>
+                <span style="color:red;font-weight:bold">{{context.dowell_error}}</span>
+            </td>
+
+            </div></tr>
+            <tr>
+            <div>
+                <td><label for="location">Location</label></td>
+                <td><input type="text" name="location_code" id="location" required>
+                    <span style="color:red;font-weight:bold">{{context.location_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+               <td> <label for="object">Object Code</label></td>
+                <td><input type="text" name="object_code" id="object" required>
+                    <span style="color:red;font-weight:bold">{{context.object_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+
+                <td><label for="instance">Instance Id</label></td>
+                <td><input type="text" name="instance_id" id="instance" required>
+                    <span style="color:red;font-weight:bold">{{context.instance_error}}</span>
+                </td>
+
+            </div></tr>
+            <tr>
+            <div>
+               <td> <label for="rules">Rules</label></td>
+               <td> <input type="text" name="rules" id="rules" required>
+                <span style="color:red;font-weight:bold">{{context.rules_error}}</span>
+            </td>
+            </div></tr>
+            <tr>
+            <div>
+               <td> <label for="context">Context</label></td>
+               <td> <input type="text" name="context" id="context" required>
+                <span style="color:red;font-weight:bold">{{context.context_error}}</span>
+            </td>
+
+            </div></tr>
+            <tr>
+                <div>
+                   <td> <label for="document">Document_id</label></td>
+                   <td> <input type="text" name="document_id" id="document" required>
+                    <span style="color:red;font-weight:bold">{{context.document_error}}</span>
+                </td>
+
+                </div></tr>
+                <tr>
+            <div>
+               <td> <label for="status">Status</label></td>
+               <td> <input type="text" name="status" id="status" required>
+                <span style="color:red;font-weight:bold">{{context.status_error}}</span>
+            </td>
+
+            </div></tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="submit"></td>
+            </tr>
+
+        </form></table>
+    <h2 align=center><font color="red">{{context.event_error}}</font></h2>
+    <h2 align=center><font color="green">{{context.retstring}}</font></h2>
+
+    </div>
+    </body>
+</html>
