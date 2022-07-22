@@ -61,5 +61,11 @@
 
 
     r=requests.post(url,json=data)
+    print(r.text)
     
  ```
+ 
+ ### Response:
+ response will be an string of event id. If event creation is success.
+ 
+ 
