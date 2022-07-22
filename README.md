@@ -1,6 +1,6 @@
 # Event Creation API
 
-#### url: https://100003.pythonanywhere.com/event_creation
+#### Url: https://100003.pythonanywhere.com/event_creation
 #### method: post
 
 #### request data
