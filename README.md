@@ -26,6 +26,11 @@
       "status":"work",
       "data_type": "learn",
       "purpose_of_usage": "add",
+      "colour":"color value",
+      "hashtags":"hash tag alue",
+      "mentions":"mentions value",
+      "emojis":"emojis",
+      "bookmarks": "a book marks"
 }
 
 ```
@@ -57,6 +62,11 @@
         "status":"work",
         "data_type": "learn",
         "purpose_of_usage": "add",
+        "colour":"color value",
+        "hashtags":"hash tag alue",
+        "mentions":"mentions value",
+        "emojis":"emojis",
+        "bookmarks": "a book marks"
     }
 
 
