@@ -1,0 +1,62 @@
+<html>
+    <head>
+         <style>
+            input{
+                display:block;
+                margin-top: 8px;
+            }
+
+            body{
+
+                display:flex;
+
+            }
+
+            #event-create-form{
+                margin-right:24px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form id="event-create-form" >
+
+            <input type="text" name="platformcode" placeholder="platformcode">
+            <input type="text" name="citycode" placeholder="citycode">
+            <input type="text" name="daycode" placeholder="daycode">
+            <input type="text" name="dbcode" placeholder="dbcode">
+            <input type="text" name="ip_address" placeholder="ip address">
+            <input type="text" name="login_id" placeholder="login id">
+            <input type="text" name="session_id" placeholder="session_id">
+            <input type="text" name="processcode" placeholder="processcode">
+            <input type="text" name="regional_time" placeholder="regional time">
+            <input type="text" name="dowell_time" placeholder="dowell time">
+            <input type="text" name="location" placeholder="location">
+            <input type="text" name="objectcode" placeholder="objectcode">
+            <input type="text" name="instancecode" placeholder="instancecode">
+            <input type="text" name="context" placeholder="context">
+            <input type="text" name="document_id" placeholder="document id">
+            <input type="text" name="rules" placeholder="rules">
+            <input type="text" name="status" placeholder="status">
+            <input type="text" name="data_type" placeholder="data type">
+            <input type="text" name="purpose_of_usage" placeholder="purpose of usage">
+            <input type="text" name="colour" placeholder="colour">
+            <input type="text" name="hashtags" placeholder="hashtags">
+            <input type="text" name="mentions" placeholder="mentions">
+            <input type="text" name="emojis" placeholder="emojis">
+            <input type="text" name="bookmarks" placeholder="bookmarks">
+            <input type="submit">
+        </form>
+
+
+        <div>
+             <h2>Output:</h2>
+             <div id="output-section"></div>
+
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename = 'test_frontend.js') }}"></script>
+    </body>
+
+</html>

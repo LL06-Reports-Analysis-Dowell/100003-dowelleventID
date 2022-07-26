@@ -17,7 +17,7 @@ def timefun():
 d = datetime.datetime.strptime("2017-10-13T10:53:53.000Z", "%Y-%m-%dT%H:%M:%S.000Z")
 
 def event_creation(pfm_id,city_id,day_id,db_id,process_id,object_id,instance_id,context,rule,login_id,document_id,status_id,IP,session_id,location,
-        data_type, purpose_of_usages, colour, hashtags, mentions, emojis ):
+        data_type, purpose_of_usages, colour, hashtags, mentions, emojis, bookmarks ):
 
     pfm_code = pfm_id
     pfm={"platformcode":pfm_code}
@@ -26,8 +26,8 @@ def event_creation(pfm_id,city_id,day_id,db_id,process_id,object_id,instance_id,
         return "Platform code not matching"
     # return pfm_response
     else:
-    #city_ID=re.findall('\d+',response)[0]
         pfm_id=pfm_code
+
     city_code = city_id
     city={"citycode":city_code}
     city_response=dowellconnection("mstr","bangalore","pfm","city_master","city_master","67654321","ABCDE","fetch",city,"nil")
@@ -35,15 +35,18 @@ def event_creation(pfm_id,city_id,day_id,db_id,process_id,object_id,instance_id,
         return "City code not matching"
     else:
         city_id=city_code
+
     day_code = day_id
     day={"daycode":day_code}
     day_response=dowellconnection("mstr","bangalore","pfm","day_master","day_master","77654321","ABCDE","fetch",day,"nil")
+
     if not day_code in day_response or day_response=="false":
         return "day code not matching"
     else:
         day_id=day_code
     db_code =db_id
     db={"dbcode":db_code}
+
     db_response=dowellconnection("mstr","bangalore","pfm","db_master","db_master","37654321","ABCDE","find",db,"nil")
     if not db_code in db_response or db_response=="false":
         return "database code not matching"
@@ -51,7 +54,9 @@ def event_creation(pfm_id,city_id,day_id,db_id,process_id,object_id,instance_id,
         db_id=db_code
     process_code = process_id
     process={"processcode":process_code}
+
     process_response=dowellconnection("mstr","bangalore","pfm","process_master","process_master","57654321","ABCDE","fetch",process,"nil")
+
     if not process_code in process_response or process_response=="false":
         return "process code not matching"
     else:
@@ -59,6 +64,7 @@ def event_creation(pfm_id,city_id,day_id,db_id,process_id,object_id,instance_id,
     object_code = object_id
     object={"objectcode":object_code}
     object_response=dowellconnection("mstr","bangalore","pfm","object_master","object_master","47654321","ABCDE","fetch",object,"nil")
+
     if not object_code in object_response or object_response=="false":
         return "object code not matching"
     else:
@@ -115,6 +121,7 @@ def event_creation(pfm_id,city_id,day_id,db_id,process_id,object_id,instance_id,
             "hashtags": hashtags,
             "mentions": mentions,
             "emojis": emojis,
+            "bookmarks": bookmarks,
         }
 
         NewObjectID=dowellconnection("FB","bangalore","blr","events","events","87654321","ABCDE","insert",field,"nil")

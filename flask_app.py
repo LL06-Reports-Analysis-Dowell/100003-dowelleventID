@@ -26,110 +26,12 @@ def dowellclock():
         dowell=t1-oldt
         return dowell
 
-# @app.route('/', methods =["GET", "POST"])
-# def dowellevents():
-#     if (request.method=="POST"):
-#         request_data=request.get_json()
-#         platformcode = request_data['platformcode']
-#         citycode= request_data['citycode']
-#         daycode= request_data['daycode']
-#         dbcode= request_data['dbcode']
-#         ip_address= request_data['ip_address']
-#         login_id=request_data['login_id']
-#         session_id=request_data['session_id']
-#         processcode = request_data['processcode']
-#         regional_time=request_data['regional_time']
-#         dowell_time=request_data['dowell_time']
-#         location=request_data['location']
-#         objectcode=request_data['objectcode']
-#         instance_id = request_data['instancecode']
-#         context = request_data['context']
-#         document_id = request_data['document_id']
 
+@app.route('/event/creation/test',methods =["GET"])
+def frontend_event_create():
+    if (request.method=="GET"):
+        return render_template('test_frontend.html')
 
-#         field={"platformcode":platformcode }
-#         response=dowellconnection("mstr","bangalore","mysql","platform_master","pfm_master","97654321","ABCDE","fetch",field,"nil")
-#         if response != "null":
-#             platform_ID=response
-#         else:
-#             error = {"number": 0,"description": "Platform is not matching"}
-#             return error
-
-#         field={"citycode":citycode}
-#         response=dowellconnection("mstr","bangalore","mysql","city_master","city_master","67654321","ABCDE","fetch",field,"nil")
-#         if response != "null":
-#             city_ID=response
-#         else:
-#             error = {"number": 0,"description": "city code is not matching"}
-#             return error
-
-#         field={"daycode":daycode }
-#         response=dowellconnection("mstr","bangalore","mysql","day_master","day_master","77654321","ABCDE","fetch",field,"nil")
-#         if response != "null":
-#             day_ID =response
-#         else:
-#             error = {"number": 0,"description": "day code is not matching"}
-#             return error
-
-#         field={"dbcode":dbcode }
-#         response=dowellconnection("mstr","bangalore","mysql","db_master","db_master","37654321","ABCDE","fetch",field,"nil")
-#         if response != "null":
-#             db_ID =response
-#         else:
-#             error = {"number": 0,"description": "database code is not matching"}
-#             return error
-
-#         field={"processcode":processcode }
-#         response=dowellconnection("mstr","bangalore","mysql","process_master","process_master","57654321","ABCDE","fetch",field,"nil")
-#         if response != "null":
-#             process_ID=response
-#         else:
-#             error = {"number": 0,"description": "Process code is not matching"}
-#             return error
-
-#         field={"objectcode":objectcode }
-#         response=dowellconnection("mstr","bangalore","mysql","object_master","object_master","47654321","ABCDE","fetch",field,"nil")
-#         if response != "null":
-#             object_ID =response
-#         else:
-#             error = {"number": 0,"description": "Object code is not matching"}
-#             return error
-#         """
-#         field={"instancecode":instancecode }
-#         response=dowellconnection.dowellconnection("FB","bangalore","mysql","object_master","qr","654321","EDCBA","fetch",field,"nil")
-#         if response != "null":
-#             instance_ID =response
-#         else:
-#             error = {"number": 0,"description": "Instance code is not null"}
-#             return error
-
-#         """
-#         if not instance_id:
-#             error = {"number": 0,"description": "'Instance Id is null'"}
-#             return error
-#         if isinstance(context, list) and not context:
-#             error = {"number": 0,"description": "context is empty"}
-#             return error
-
-#         if len(document_id)<24:
-#             document_id=document_id.zfill(24-len(document_id)) # To fill prefix with zero to make length to 24
-#         if len(document_id)>24:
-#             error = {"number": 0,"description": "Invalid document id"}
-#             return error
-
-#         event_id=platform_ID+city_ID+day_ID+document_id
-#         if len(event_id) !=33:
-#             error = {"number": 0,"description": event_id+"Error in Event Id Creation"}
-#             return error
-
-
-#         field = {"eventId":event_id ,"DatabaseId":db_ID ,"IP":ip_address,"login":login_id ,"session":session_id,"process":process_ID,"regional_time":regional_time,"dowell_time":dowell_time,"location":location,"object":object_ID,"instane_id":instance_id,"context": context}
-#         NewObjectID=dowellconnection("FB","bangalore","mongodb","events","events","87654321","ABCDE","insert",field,"nil")
-#         #retstring = NewObjectID + event_id
-#         retstring = 'NewObjectID'+':'+NewObjectID+ '\n' +'event_id'+':'+event_id
-#         #return JSONEncoder().encode(retstring)
-#         #return {"NewObjectID": str(NewObjectID) , "event_id": str(event_id)}
-#         return retstring
 @app.route('/eventcreation',methods =["GET", "POST"])
 def api_data():
     if (request.method=="POST"):
@@ -217,9 +119,7 @@ def api_data():
         if len(event_id) !=30:
             return "Error while creating Event ID"
         else:
-            #newdate=datetime.datetime.strptime(request_data["dowell_time"], '%d/%m/%Y %H:%M:%S')
-            #ls=[pfm_id,city_code,day_id,db_id,request_data["IP_Address"],request_data["login"],request_data["session"],process_id,
-            #request_data["regional_time"],request_data["dowell_time"],request_data["location"],object_id,instance_id,context,document_id]
+
             field = {"eventId":event_id ,
             "DatabaseId":db_id ,"IP":request_data["ip_address"],
             "login":request_data["login_id"],"session":request_data["session_id"],
@@ -341,6 +241,7 @@ def form_data():
     context["time"]=time
 
     return render_template("index.html",context=context)
+
 @app.route('/testevent',methods =["GET", "POST"])
 def event():
     context={}
@@ -375,26 +276,21 @@ def event_call():
     from event_function import event_creation
     if (request.method=="POST"):
         request_data=request.get_json()
-        data={"platformcode":"FB" ,"citycode":"101","daycode":"0",
-                "dbcode":"pfm" ,"ip_address":"127.0.0.1",
-                "login_id":"lav","session_id":"new",
-                "processcode":"1","regional_time":time,
-                "dowell_time":time,"location":"224465",
-                "objectcode":"1","instancecode":"10001","context":"rad",
-                "document_id":"3003","rules":"some rules","status":"work"
-                }
+
+
         data_type = request_data.get("data_type", "")
         purpose_of_usage = request_data.get("purpose_of_usage", "")
         colour = request_data.get("colour", "")
         hashtags = request_data.get("hashtags", "")
         mentions = request_data.get("mentions", "")
         emojis = request_data.get("emojis", "")
+        bookmarks = request_data.get("bookmarks", "")
 
         event_id=event_creation(request_data["platformcode"],request_data["citycode"],request_data["daycode"],
             request_data["dbcode"],request_data["processcode"],request_data["objectcode"],request_data["instancecode"],
             request_data["instancecode"],request_data["rules"],request_data["login_id"],request_data["document_id"],
             request_data["status"],request_data["ip_address"], request_data["session_id"],request_data["location"],
-            data_type, purpose_of_usage, colour, hashtags, mentions, emojis)
+            data_type, purpose_of_usage, colour, hashtags, mentions, emojis, bookmarks)
         return event_id
     return "its works"
 
@@ -441,107 +337,7 @@ def Android():
         dic={}
         request_data=request.form.to_dict()
         dic["message"]="str"
-        # enstr=name.encode()
-        # destr=base64.b64decode(enstr)
-        # strorig=destr.decode()
-        # name1=strorig.replace("'", "\"")
-        # #name1=name.replace("'", "\"")
-        # jsontodic=json.loads(name1)
-        # try:
-        #     field={"order_id": str(jsontodic["order_id"])}
-        #     conn_fetch=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","find",field,"nil")
-        #     fetch_item=json.loads(conn_fetch)
-        #     field1={"item_id": fetch_item["item_id"]}
-        #     conn=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","find",field1,"nil")
-        #     fetch_items=json.loads(conn)
-        #     number=int(fetch_items["waiting_status"])
-        #     while True:
-        #         rquery={"item_id": fetch_item["item_id"],"waiting_status":str(number)}
-        #         rr=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","find",rquery,"nil")
-        #         if rr!="null":
-        #             query1={"item_id": fetch_item["item_id"],"waiting_status":str(number)}
-        #             update={"waiting_status": str(number-1)}
-        #             conn=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","update",query1,update)
-        #         else:
-        #             break
-        #     query={"order_id": str(jsontodic["order_id"])}
-        #     update={"waiting_status": "0","delivery_status": "Yes"}
-        #     conn_update=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","update",query,update)
-        #     dic["message"]="Order delivered"
-        #     return jsonify(dic)
-        # except:
-        #     dic["message"]="An error occurred while updating"
-        return jsonify(dic)
-        # try:
-        #     while True:
-        #         rquery={"item_id": fetch_item["item_id"],"waiting_status":str(number)}
-        #         rr=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","find",rquery,"nil")
-        #         if rr!="null":
-        #             query1={"item_id": fetch_item["item_id"],"waiting_status":str(number)}
-        #             update={"waiting_status": str(number-1)}
-        #             conn=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","update",query,update)
-        #         else:
-        #             break
-        #     query={"order_id": jsontodic["order_id"]}
-        #     update={"waiting_status": "0","delivery_status": "Yes"}
-        #     conn_update=dowellconnection("qr","bangalore","qrcode_demo_app","app_data","app_data","2387654311","ABCDE","update",query,update)
-        #     dic["message"]=conn_update
-        #     return jsonify(dic)
-        # except:
-        #     dic["message"]="an error occurred while update"
-        #     return jsonify(dic)
+
     return "it works"
-
-#fill using html form
-# @app.route('/form',methods =["GET", "POST"])
-# def index1(context=None):
-#     context={}
-#     if (request.method=="POST"):
-#         request_data=request.form.to_dict()
-#         value = request_data['value']
-#         objects = request_data['object']
-#         rule = request_data['rules']
-#         login = request_data['login']
-#         if value and objects and rule and login:
-#             context["value"]=value
-#             context["object"]=objects
-#             context["rule"]=rule
-#             context["login"]=login
-#             timer=timefun()
-#             context["time"]=timer
-#             field = {"somevalue":value,"modified date":timer,"objects":objects,"rule":rule,"login":login}
-#             #create=dowellconnection("FB","bangalore","blr","events","events","87654321","ABCDE","insert",field,"nil")
-#         else:
-#             context["err"]="Input is blank"
-#     return render_template("create.html",context=context)
-#fill using html form
-# @app.route('/timefun',methods =["GET", "POST"])
-# def timefunc():
-#     if (request.method=="POST"):
-#         request_data=request.get_json()
-#         value = request_data['value']
-#         objects = request_data['object']
-#         rule = request_data['rules']
-#         login = request_data['login']
-#         if value and objects and rule and login:
-#             timer=timefun()
-#             field = {"somevalue":value,"modified date":timer,"objects":objects,"rule":rule,"login":login}
-#             create=dowellconnection("FB","blr","mongodb","events","events","87654321","ABCDE","insert",field,"nil")
-#             return "data successfully sent"
-#         else:
-#             return "could not insert data into the database"
-#     return "it works"
-# with app.test_request_context():
-#     print(url_for('index'))
-
-# with app.test_request_context():
-#     print(url_for('index'))
-# if __name__=='__main__':
-#     app.run(debug=True)
-# class JSONEncoder(json.JSONEncoder):
-#     def default(self, o):
-#         if isinstance(o, ObjectId):
-#             return str(o)
-#         return json.JSONEncoder.default(self, o)
 
 
