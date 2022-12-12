@@ -34,6 +34,37 @@
 }
 
 ```
+### for the values
+		Platform			
+			Input variable from master database in mysql		
+		City			
+			Input variable from master database in mysql		
+		Day			
+			Input variable from master database in mysql		
+		Database 			
+			Input variable from master database in mysql		
+		IP Address			
+			Call dowell track my IP function		
+		Login ID			
+			Call DowellLogin function		
+		Session ID			
+			Call DowellLogin function		
+		Process 			
+			Input variable from master database in mysql		
+		Regional time			
+			Call Dowell Clock function		
+		Dowell time			
+			Call Dowell Clock function		
+		Location(GPS)			
+			Call Dowell track my IP function		
+		Object/form/flow			
+			Input variable from master database in mysql		
+		Instance ID			
+			Input variable from the function 		
+		Context			
+			Input array from the function 		
+		Document ID			
+			Input variable from the function		
 
 ### Full example of calling event creation api:
 
