@@ -107,6 +107,8 @@
  ```
  
  ### Response:
- response will be an string of event id. If event creation is success.
+ for success: {"is_success":true,"event_id":"FB1010000000000000000000003004","inserted_id":"63d0fca722375cb0dc8e336f"}
+ for error: {"is_success":true,"event_id":"FB1010000000000000000000003004","inserted_id":"63d0fca722375cb0dc8e336f"}
+ 
  
  
